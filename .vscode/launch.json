@@ -7,8 +7,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Program (no build)",
+      "program": "${workspaceFolder}/dist/index.js",
+      "sourceMaps": true,
+      "cwd": "${workspaceFolder}/dist",
+      "env": {
+        "DEBUG": "*"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/dist/test.js",
+      "program": "${workspaceFolder}/dist/index.js",
       "sourceMaps": true,
       "preLaunchTask": "build",
       "cwd": "${workspaceFolder}/dist",
