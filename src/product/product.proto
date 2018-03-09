@@ -1,0 +1,8 @@
+package product;
+syntax = "proto3";
+
+message NewProduct {
+  string name = 1;
+  string sku = 2;
+  string description = 3;
+}
