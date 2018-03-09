@@ -1,4 +1,4 @@
-import { decode, encode } from '../protobufManager'
+import { decode, encode } from '../../protobufManager'
 import debug from 'debug'
 import path from 'path'
 
@@ -8,7 +8,7 @@ const log = debug('message:log')
 log.log = console.log.bind(console)
 global.log = log
 
-const productProtoFile = path.resolve(`${__dirname}/product.proto`)
+const productProtoFile = path.resolve(`${__dirname}/../product.proto`)
 const typeName = 'product.NewProduct'
 
 /**

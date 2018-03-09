@@ -1,7 +1,10 @@
 {
   "name": "messages",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/protobufManager.js",
+  "directories": {
+    "messages": "./dist/messages"
+  },
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.1",
@@ -31,10 +34,12 @@
     "eslint-plugin-jsdoc": "3.3.1",
     "jest": "^22.4.2",
     "regenerator-runtime": "^0.11.1",
+    "shelljs": "^0.8.1",
+    "shx": "^0.2.2",
     "tempfile": "^2.0.0"
   },
   "scripts": {
-    "copy:assets": "cp src/product/*.proto dist/product/",
+    "copy:assets": "shx cp -r src/messages/*.proto dist/messages/",
     "clean": "rimraf {cache,coverage,dist}",
     "lint": "eslint .",
     "watch": "cross-env DEBUG=consumer:product:operations:log babel-watch -L src/index.js --ignore **/*.spec.js",
