@@ -12,21 +12,28 @@ const productProtoFile = path.resolve(`${__dirname}/product.proto`)
 const typeName = 'product.NewProduct'
 
 /**
- * 
+ * Product class, used to exchange messages
  */
 export default class Product {
   /**
-   * Teste.
+   * Constructor for Product class.
    * 
-   * @example new ()
+   * @param {string} name - Name of the product.
+   * @param {string} description - Description of the product.
+   * @param {string} sku - SKU of the product.
+   * 
+   * @example new Product()
    */
   constructor(name, description, sku) {
     this.name = name
     this.description = description
     this.sku = sku
   }
+
   /**
+   * Method to especialize the protobufManager and return the encoded info.
    * 
+   * @example const encodedMessage = await encode()
    */
   async encode() {
     return await encode(
@@ -37,8 +44,11 @@ export default class Product {
   }
 
   /**
+   * Method to especialize the protobufManager and return the decoded payload.
    * 
-   * @param {*} message 
+   * @param {Uint8Array} message - Payload to decode.
+   * 
+   * @example const payload = await decode(arrayOfBytes)
    */
   async decode(message) {
     const data = await decode(
