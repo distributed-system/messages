@@ -5,4 +5,5 @@ message NewProduct {
   string name = 1;
   string sku = 2;
   string description = 3;
+  int64 createdAt = 4;
 }

@@ -8,7 +8,7 @@ const log = debug('message:log')
 log.log = console.log.bind(console)
 global.log = log
 
-const productProtoFile = path.resolve(`${__dirname}/../product.proto`)
+const productProtoFile = path.resolve(`${__dirname}/../protos/product.proto`)
 const typeName = 'product.NewProduct'
 
 /**
@@ -21,13 +21,15 @@ export default class Product {
    * @param {string} name - Name of the product.
    * @param {string} description - Description of the product.
    * @param {string} sku - SKU of the product.
+   * @param {int64} createdAt - Creation date in timestamp.
    * 
    * @example new Product()
    */
-  constructor(name, description, sku) {
+  constructor(name, description, sku, createdAt) {
     this.name = name
     this.description = description
     this.sku = sku
+    this.createdAt = createdAt || new Date().getTime()
   }
 
   /**
@@ -60,7 +62,8 @@ export default class Product {
     return new Product(
       data.name,
       data.description,
-      data.sku
+      data.sku,
+      data.createdAt.toNumber()
     )
   }
 }
