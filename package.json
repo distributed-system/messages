@@ -1,9 +1,10 @@
 {
   "name": "messages",
   "version": "1.0.0",
-  "main": "dist/protobufManager.js",
+  "main": "dist/index.js",
+  "typings": "src/index.d.ts",
   "directories": {
-    "messages": "./dist/messages"
+    "lib": "./dist/messages"
   },
   "license": "MIT",
   "dependencies": {
@@ -36,18 +37,15 @@
     "regenerator-runtime": "^0.11.1",
     "shelljs": "^0.8.1",
     "shx": "^0.2.2",
-    "tempfile": "^2.0.0"
+    "tempfile": "^2.0.0",
+    "yarn": "^1.5.1"
   },
   "scripts": {
-    "copy:assets": "shx cp -r src/messages/*.proto dist/messages/",
+    "copy:assets": "shx cp -r src/contracts/protos dist/contracts/protos",
     "clean": "rimraf {cache,coverage,dist}",
     "lint": "eslint .",
-    "watch": "cross-env DEBUG=consumer:product:operations:log babel-watch -L src/index.js --ignore **/*.spec.js",
     "build": "yarn clean && yarn lint && babel src -d dist --ignore **/*.spec.js && yarn copy:assets",
     "build:dev": "yarn clean && yarn lint && babel src -d dist --ignore **/*.spec.js --source-maps inline && yarn copy:assets",
-    "migrate:up": "knex migrate:latest --knexfile ./src/db/config.js",
-    "migrate:down": "knex migrate:rollback --knexfile ./src/db/config.js",
-    "test": "cross-env DEBUG=message:log jest --config jest.config.js --forceExit",
-    "start": "yarn build && cross-env DEBUG=* node ./dist/index.js"
+    "test": "cross-env DEBUG=message:log jest --config jest.config.js --forceExit"
   }
 }
